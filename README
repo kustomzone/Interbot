@@ -49,6 +49,10 @@ For full functionality, this project has several dependencies:
 
 12. JavaScript SHA-1 implementation (for example, https://code.google.com/p/crypto-js)
 
+13. A JavaScript compressor such as http://yui.github.io/yuicompressor.
+    The compressor is assumed to be in the tools directory.
+    If a different compressor is used or the compressor is installed in a different directory, the server build.properties must be updated.
+
 Dependencies 1 - 6 are needed for compiling.
 Dependencies 7 and 8 are need to run the server.
 Dependencies 9 - 12 are needed for the Web UI.
@@ -70,6 +74,7 @@ The client and server are documented by comments in the source code.
 
 The server can be deployed by producing a war file, via 'ant war'.
 Note that this requires that all resources needed by the UI are present. Placeholder images can be used.
+The server requires all jar files in the build directory.
 
 The client can be also run via a web browser. The war file can be produced via 'ant war'.
 Again, any required resources such as images must be provided or replaced by placeholders.
