@@ -1,0 +1,77 @@
+Interbot is a Web browser based telepresence system for robots.
+Interbot uses WebRTC for video and audio communication and WebSockets to transmit robot control commands.
+On the remote user side, no additional software needs to be installed. A WebRTC compatible browser can be used to control a remote robot.
+On the robot side, the Interbot client needs to be installed which connects to the local robot via a serial interface.
+
+This implementation provides the code for the server, robot client and remote user.
+The serial protocol used to communicate with the robot may need to be adjusted depending on the robot.
+
+The full web application requires additional resources such as images for buttons and sounds. These have not been included in this release.
+Other images may be used as substitutes or the resources may be ignored.
+
+The web server requires a SQL server to maintain a user database. The SQL code to set up the database is included.
+
+For full functionality, this project has several dependencies:
+1. Intercom for communication (see https://github.com/tunaoezer/Intercom).
+   This project has been included in this release for convenience.
+
+2. log4j 2, see http://logging.apache.org/log4j/2.x
+   Must be placed into lib/java (see README in directory).
+
+3. jackson 2.2.3 or compatible, see http://wiki.fasterxml.com/JacksonHome
+   Must be placed into lib/java (see README in directory).
+
+4. junit, see http://junit.org and hamcrest, see https://code.google.com/p/hamcrest
+   Used for testing of Intercom only. Otherwise, not needed.
+   Must be placed in lib/java_test.
+
+5. RXTXcomm.jar
+   Intall librxtx-java (via apt-get) on the robot client.
+   Copy RXTXcomm.jar (from /usr/share/java) to lib/java or update build.properties.
+
+6. A Java EE container for WebSockets such as Tomcat.
+   The preconfigured container is Apache Tomcat, which can be obtained from http://tomcat.apache.org.
+   It is assumed that Tomcat is located under the www directory of the user home directory.
+   If Tomcat is installed in a different directory or a newer version is used, the build.properties file may need to be updated.
+
+7. A SQL server such as MySQL.
+   The server must have a corresponding Java connector installed.
+   The SQL server maintains the user database.
+
+8. A TURN server for WebRTC. If no TURN server is available, a default STUN server can be used.
+   The server parameters may have to configured in the appropriate jsp files.
+
+9. jQuery (http://jquery.com)
+
+10. jQueryUI (http://jqueryui.com)
+
+11. Autobahn JS (http://autobahn.ws/js)
+
+12. JavaScript SHA-1 implementation (for example, https://code.google.com/p/crypto-js)
+
+Dependencies 1 - 6 are needed for compiling.
+Dependencies 7 and 8 are need to run the server.
+Dependencies 9 - 12 are needed for the Web UI.
+
+To compile:
+This project includes 4 sub-projects that can be compiled with ant.
+
+1. get all dependencies required for compiling as described above (1 - 6), ensure that ant is installed and update any build.properties as needed.
+2. compile common: execute 'ant' from the common subdirectory
+3. compile intercom: execute 'ant' from the intercom subdirectory
+4. compile the client: execute 'ant jar' from the client subdirectory
+5. compile the server: execute 'ant' from the server subdirectory
+
+The output is placed under the build directory.
+
+Documentation for the common and intercom sub-projects can be produced via 'ant javadoc'.
+The output is placed under the javadoc directory.
+The client and server are documented by the source code.
+
+The server can be deployed by producing a war file, via 'ant war'.
+Note that this requires that all resources needed by the UI are present. Placeholder images can be used.
+
+The client can be also run via a web browser. The war file can be produced via 'ant war'.
+Again, any required resources such as images must be provided or replaced by placeholders.
+
+If files cannot be found, verify that the relevant build.properties contains the correct paths.
