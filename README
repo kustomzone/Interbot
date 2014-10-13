@@ -26,13 +26,13 @@ For full functionality, this project has several dependencies:
    Must be placed in lib/java_test.
 
 5. RXTXcomm.jar
-   Intall librxtx-java (via apt-get) on the robot client.
+   Install librxtx-java (via apt-get) on the robot client.
    Copy RXTXcomm.jar (from /usr/share/java) to lib/java or update build.properties.
 
 6. A Java EE container for WebSockets such as Tomcat.
    The preconfigured container is Apache Tomcat, which can be obtained from http://tomcat.apache.org.
    It is assumed that Tomcat is located under the www directory of the user home directory.
-   If Tomcat is installed in a different directory or a newer version is used, the build.properties file may need to be updated.
+   If Tomcat is installed in a different directory or a newer version is used, the build.properties files may need to be updated.
 
 7. A SQL server such as MySQL.
    The server must have a corresponding Java connector installed.
@@ -66,7 +66,7 @@ The output is placed under the build directory.
 
 Documentation for the common and intercom sub-projects can be produced via 'ant javadoc'.
 The output is placed under the javadoc directory.
-The client and server are documented by the source code.
+The client and server are documented by comments in the source code.
 
 The server can be deployed by producing a war file, via 'ant war'.
 Note that this requires that all resources needed by the UI are present. Placeholder images can be used.
