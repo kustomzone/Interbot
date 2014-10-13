@@ -1,0 +1,6 @@
+{
+    "server": "localhost:8080",
+    "service": "/interbot/robot/robot_service.wamp",
+    "secure": false,
+    "autostart": false
+}

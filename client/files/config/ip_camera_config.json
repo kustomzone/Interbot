@@ -1,0 +1,37 @@
+{
+    "ipAddress": "192.168.1.67",
+    "port": 80,
+    "videostreamUrl": "videostream.cgi",
+    "username": "admin",
+    "password": "",
+    "frameRate": 8.0,
+    "initInstructions": [ "camera_control.cgi?param=0&value=8" ],
+    "panTilt": {
+        "url": "decoder_control.cgi?command=",
+        "right": {
+            "begin": "4",
+            "end": "7",
+            "durationMillis": 1000
+        },
+        "left": {
+            "begin": "6",
+            "end": "5",
+            "durationMillis": 1000
+        },
+        "up": {
+            "begin": "0",
+            "end": "1",
+            "durationMillis": 1000
+        },
+        "down": {
+            "begin": "2",
+            "end": "3",
+            "durationMillis": 1000
+        },
+        "center": {
+            "begin": "25",
+            "end": "",
+            "durationMillis": 0
+        }
+    }
+}

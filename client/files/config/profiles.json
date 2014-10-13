@@ -1,0 +1,10 @@
+{
+    "default": "robot1",
+    "profiles": [
+        {
+            "name": "robot1",
+            "username": "robot1",
+            "key": "28b82019780ba42a1d1ba0f4d3c0a10b1023d87b"
+        }
+    ]
+}

@@ -1,0 +1,129 @@
+/* Copyright (C) 2013 Tuna Oezer, General AI. */
+/* All rights reserved. */
+
+@CHARSET "UTF-8";
+html { height: 100%; }
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+table, tr, td {
+    margin: 0;
+    padding: 0;
+}
+img {
+    vertical-align: middle;
+}
+
+.text {
+    width: 300px;
+}
+.menu_item {
+    border: thin solid black;
+    cursor: pointer;
+    font: 20px cursive;
+    height: 40px;
+    text-align: left;
+}
+.menu_item_unselected {
+    color: white;
+    background-color: DimGray;
+}
+.menu_item_unselected:hover {
+    background-color: LightGray;
+}
+.menu_item_selected {
+    color: black;
+    background-color: green;
+    font-weight: bold;
+}
+.menu_page {
+    background-color: #FFF8D8;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 25%;
+    right: 0;
+}
+.menu_page_hidden {
+    display: none;
+}
+.menu_page_selected {
+    display: block;
+}
+.menu_content {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 10px;
+}
+.action_button {
+    font-size: 32px;
+    text-align: left;
+    width: 90%;
+    max-width: 350px;
+}
+.drop_down {
+    font-size: 32px;
+    width: 90%;
+    max-width: 350px;
+}
+.wifi_input {
+    font-size: 20px;
+    height: 24px;
+    width: 90%;
+}
+
+#page {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#top_bar {
+    background: radial-gradient(#909090, #101010);
+    border-bottom: 3px ridge #101010;
+
+    position: absolute;
+    top: 0;
+    bottom: calc(100% - 40px);
+    left: 0;
+    right: 0;
+}
+#logo {
+    color: white;
+    font: small-caps 20px Impact fantasy;
+
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 10px;
+}
+#root_pane {
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#menu_pane {
+    background-color: #C0C0C0;
+    border-right: thick solid DimGray;
+    overflow-y: auto;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 75%;
+}
+#menu_list {
+    width: 100%;
+}

@@ -1,0 +1,65 @@
+<project name="interbot-client" default="compile">
+
+  <property name="user_home" location="${user.home}"/>
+  <property file="build.properties"/>
+
+  <target name="clean">
+    <delete dir="${build}"/>
+  </target>
+
+  <target name="compile">
+    <mkdir dir="${classpath}"/>
+    <javac
+        srcdir="${src}"
+        destdir="${classpath}"
+        target="1.7"
+        includeAntRuntime="false"
+        debug="${debug}"
+        deprecation="on">
+      <classpath>
+        <pathelement location="${common_lib}"/>
+        <pathelement location="${intercom_lib}"/>
+        <fileset dir="${tomcat_path}/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${jackson_path}">
+          <include name="jackson*.jar"/>
+        </fileset>
+        <pathelement location="${log4j_lib}"/>
+        <pathelement location="${serial_lib}"/>
+      </classpath>
+      <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <mkdir dir="${jarpath}"/>
+    <jar destfile="${jarpath}/${ant.project.name}.jar" basedir="${classpath}"/>
+  </target>
+
+  <target name="war" depends="compile">
+    <war destfile="${warpath}/${webapp_name}.war"
+         webxml="web/WEB-INF/web.xml">
+      <classes dir="${classpath}"/>
+      <lib dir="${lib}/java"/>
+      <webinf dir="${data}">
+        <include name="**/*"/>
+      </webinf>
+      <fileset dir="${lib}">
+        <include name="js/*.min.js"/>
+      </fileset>
+      <fileset dir="${resources}">
+        <include name="**/*"/>
+      </fileset>
+      <fileset dir="web">
+        <exclude name="WEB-INF/**/*"/>
+      </fileset>
+    </war>
+  </target>
+
+  <target name="deploy" depends="war">
+    <delete dir="${deploy_path}/${webapp_name}"/>
+    <delete file="${deploy_path}/${webapp_name}.war"/>
+    <copy file="${warpath}/${webapp_name}.war" todir="${deploy_path}"/>
+  </target>
+</project>
