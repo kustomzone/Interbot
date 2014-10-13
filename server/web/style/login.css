@@ -1,0 +1,62 @@
+/* Copyright (C) 2013 Tuna Oezer, General AI.
+ * All rights reserved.
+ */
+
+@CHARSET "UTF-8";
+.login_box_general {
+    left: 20%;
+    right: 20%;
+}
+.login_box_phone {
+    left: 0;
+    right: 0;
+}
+.login_row {
+    height: 80px;
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+.login_row_heading {
+    color: white;
+    font: 22px monospace;
+    left: 5%;
+    position: absolute;
+    right: 5%;
+    top: 0;
+}
+.text_input {
+    font-size: 36px;
+    height: 40px;
+    width: 90%;
+}
+
+#login_box {
+    background-color: #606060;
+    height: 300px;
+    position: absolute;
+    top: 20%;
+}
+#login_button {
+    height: 50px;
+    left: 5%;
+    position: absolute;
+    width: 90%;
+}
+#login_row_button {
+    top: 220px;
+}
+#login_row_password {
+    top: 110px;
+}
+#login_row_user {
+    top: 20px;
+}
+#root_pane {
+    background-color: #FFF8D8;
+}
+#username_input, #password_input {
+    left: 5%;
+    position: absolute;
+    top: 25px;
+}

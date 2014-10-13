@@ -1,0 +1,45 @@
+/* Copyright (C) 2013 Tuna Oezer, General AI.
+ * All rights reserved.
+ */
+
+@CHARSET "UTF-8";
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+html { height: 100%; }
+table { table-layout: fixed; }
+
+#logo {
+    bottom: 5px;
+    color: white;
+    font: small-caps 20px Impact fantasy;
+    left: 10px;
+    position: absolute;
+    right: 15%;
+    top: 5px;
+}
+#page {
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+#root_pane {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 40px;
+}
+#top_bar {
+    bottom: calc(100% - 40px);
+    background: radial-gradient(#909090, #101010);
+    border-bottom: 3px ridge #101010;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}

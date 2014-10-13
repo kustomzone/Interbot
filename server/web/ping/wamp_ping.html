@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ping</title>
+    <script src="../js/jquery-2.0.3.min.js"></script>
+    <script src="../js/autobahn.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var send_time = 0;
+        $("#ping").click(function() {
+          $("#response").text("ping...");
+          var protocol = window.location.protocol.indexOf("https") === 0 ? "wss://" : "ws://";
+          var service_address = protocol + window.location.host + "/interbot/ping/ping.wamp";
+          ab.connect(service_address,
+                     function(session) {
+                       var now = new Date();
+                       send_time = now.getTime();
+                       session.call("wamp://" + window.location.host + "/ping_service/ping",
+                                    "pong").then(
+                         function(result) {
+                           var now = new Date();
+                           $("#response").text(result + ", latency: " +
+                                               (now.getTime() - send_time) + " ms");
+                           session.close();
+                         });
+                     },
+                     function(code, reason) {});
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="ping" style="width:100px">Ping</button>
+    <p id="response"></p>
+  </body>
+</html>

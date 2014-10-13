@@ -1,0 +1,206 @@
+/* Copyright (C) 2013 Tuna Oezer, General AI.
+ * All rights reserved.
+ */
+
+@CHARSET "UTF-8";
+thead {
+    background-color: #505050;
+    color: white;
+}
+
+.button_console {
+    margin-left: 8px;
+    margin-top: 8px;
+}
+.button_start_control {
+    height: 32px;
+    width: 80%;
+}
+.button_start_control_hidden {
+    display: none;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.property_name, .property_value {
+    border: thin solid grey;
+    overflow-x: hidden;
+}
+.robot_properties_table {
+    border: medium ridge grey;
+    border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 480px;
+    width: 60%
+}
+.robot_properties_table_phone {
+    border: medium ridge grey;
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%
+}
+.text_offline {
+    color: red;
+}
+.text_online {
+    color: green;
+}
+.user_list_cell {
+    border: thin solid grey;
+    text-align: center;
+}
+.user_list_row {
+    cursor: pointer;
+    height: 36px;
+}
+.user_list_row_Offline {
+    background-color: #D0D0D0;
+}
+.user_list_row_Offline:hover {
+    background-color: #F0F0F0;
+}
+.user_list_row_Online {
+    background-color: #00E000;
+}
+.user_list_row_Online:hover {
+    background-color: #00FF00;
+}
+.user_table {
+    border: medium ridge grey;
+    border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 480px;
+    width: 80%
+}
+.user_table_phone {
+    border: medium ridge grey;
+    border-collapse: collapse;
+    margin-top: 0;
+    width: 100%
+}
+.username {
+    color: white;
+    cursor: pointer;
+    font: 20px monospace;
+    left: 10px;
+    position: absolute;
+    top: 4px;
+}
+.username:hover {
+    text-decoration: underline;
+}
+.username_cell {
+    border: thin solid grey;
+    overflow-x: hidden;
+    text-algin: left;
+}
+.username_phone {
+    color: white;
+    font: 12px monospace;
+    left: 4px;
+    position: absolute;
+    top: 8px;
+}
+.view {
+    background-color: #FFF8D8;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+.view_selected {
+    display: block;
+}
+.view_unselected {
+    display: none;
+}
+
+#area_return_to_robot_list_view {
+    margin-top: 20px;
+    text-align: center;
+}
+#area_robot_detail_start_control {
+    margin-top: 20px;
+    width: 30%;
+}
+#button_logout {
+    font-size: 18px;
+    height: 32px;
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    width: 100px;
+}
+#button_logout:hover {
+    background-color: red;
+}
+#button_robot_detail_start_control {
+    height: 36px;
+    width: 100%;
+}
+#console_panel {
+    background: linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+                linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+                linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+                linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+                linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+                linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%,
+                                transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+    border-top: medium groove silver;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    top: calc(100% - 64px);
+    width: 100%;
+}
+#local_video {
+    height: 60px;
+    left: calc(100% - 80px);
+    position: absolute;
+    top: calc(100% - 60px);
+    width: 80px;
+}
+#ping_text {
+    color: white;
+    font: 18px mono;
+    position: absolute;
+    right: 8px;
+    top: 20px;
+}
+#remote_video {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+#robot_detail_view {
+    overflow-y: auto;
+}
+#robot_list_view {
+    overflow-y: auto;
+}
+#robot_video {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+#video_panel {
+    background-color: black;
+    bottom: 64px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}

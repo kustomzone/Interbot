@@ -1,0 +1,135 @@
+<project name="interbot-server" default="compile">
+
+  <property name="user_home" location="${user.home}"/>
+  <property file="build.properties"/>
+
+  <target name="clean">
+    <delete dir="${build}"/>
+  </target>
+
+  <target name="compile">
+    <mkdir dir="${classpath}"/>
+    <javac
+        srcdir="${java_src}"
+        destdir="${classpath}"
+        target="1.7"
+        includeAntRuntime="false"
+        debug="${debug}"
+        deprecation="on">
+      <classpath>
+        <fileset dir="${tomcat_path}/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${jackson_path}">
+          <include name="jackson*.jar"/>
+        </fileset>
+        <pathelement location="${common_lib}"/>
+        <pathelement location="${intercom_lib}"/>
+        <pathelement location="${log4j_lib}"/>
+      </classpath>
+      <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+
+  <macrodef name="yui_compressor">
+    <attribute name="target" default=""/>
+    <attribute name="filename"/>
+    <sequential>
+      <exec executable="java">
+        <arg value="-jar"/>
+        <arg value="${yui_compressor}"/>
+        <arg value="-o"/>
+        <arg value="${js_build_temp}@{target}/@{filename}.min.js"/>
+        <arg value="${js_build_debug}@{target}/@{filename}.js"/>
+      </exec>
+    </sequential>
+  </macrodef>
+
+  <target name="build_js">
+    <mkdir dir="${js_build_debug}"/>
+    <mkdir dir="${js_build_temp}"/>
+    <copy todir="${js_build_debug}">
+      <fileset dir="${js_src}">
+        <include name="**/*.js"/>
+      </fileset>
+    </copy>
+
+    <yui_compressor filename="cookie"/>
+    <yui_compressor filename="valid"/>
+    <yui_compressor filename="login"/>
+    <concat destfile="${js_build}/login.min.js">
+      <fileset file="copyright.txt"/>
+      <fileset file="${js_build_temp}/cookie.min.js"/>
+      <fileset file="${js_build_temp}/valid.min.js"/>
+      <fileset file="${js_build_temp}/login.min.js"/>
+    </concat>
+
+    <yui_compressor filename="channel"/>
+    <yui_compressor filename="compatible"/>
+    <yui_compressor filename="webrtc"/>
+    <yui_compressor filename="activity"/>
+    <yui_compressor filename="robot"/>
+    <yui_compressor filename="controller"/>
+    <yui_compressor filename="user"/>
+    <yui_compressor filename="home"/>
+    <concat destfile="${js_build}/home.min.js">
+      <fileset file="copyright.txt"/>
+      <fileset file="${js_build_temp}/channel.min.js"/>
+      <fileset file="${js_build_temp}/compatible.min.js"/>
+      <fileset file="${js_build_temp}/webrtc.min.js"/>
+      <fileset file="${js_build_temp}/activity.min.js"/>
+      <fileset file="${js_build_temp}/robot.min.js"/>
+      <fileset file="${js_build_temp}/controller.min.js"/>
+      <fileset file="${js_build_temp}/valid.min.js"/>
+      <fileset file="${js_build_temp}/user.min.js"/>
+      <fileset file="${js_build_temp}/home.min.js"/>
+    </concat>
+
+    <yui_compressor filename="controller_mobile"/>
+    <concat destfile="${js_build}/home_mobile.min.js">
+      <fileset file="copyright.txt"/>
+      <fileset file="${js_build_temp}/channel.min.js"/>
+      <fileset file="${js_build_temp}/compatible.min.js"/>
+      <fileset file="${js_build_temp}/webrtc.min.js"/>
+      <fileset file="${js_build_temp}/activity.min.js"/>
+      <fileset file="${js_build_temp}/robot.min.js"/>
+      <fileset file="${js_build_temp}/controller_mobile.min.js"/>
+      <fileset file="${js_build_temp}/user.min.js"/>
+      <fileset file="${js_build_temp}/home.min.js"/>
+    </concat>
+
+    <delete dir="${js_build_temp}"/>
+  </target>
+
+  <target name="war" depends="compile,build_js">
+    <war destfile="${warpath}/${webapp_name}.war"
+         webxml="web/WEB-INF/web.xml">
+      <classes dir="${classpath}"/>
+      <lib dir="${lib}/java"/>
+      <webinf dir="${config}">
+        <include name="*.json"/>
+      </webinf>
+      <metainf dir="${context}">
+        <include name="context.xml"/>
+      </metainf>
+      <fileset dir="${build}">
+        <include name="js/**/*.js"/>
+      </fileset>
+      <fileset dir="${lib}">
+        <include name="js/*.min.js"/>
+      </fileset>
+      <fileset dir="${resources}">
+        <include name="**/*"/>
+      </fileset>
+      <fileset dir="web">
+        <exclude name="WEB-INF/**/*"/>
+      </fileset>
+    </war>
+  </target>
+
+  <target name="deploy" depends="war">
+    <delete dir="${deploy_path}/${webapp_name}"/>
+    <delete file="${deploy_path}/${webapp_name}.war"/>
+    <copy file="${warpath}/${webapp_name}.war" todir="${deploy_path}"/>
+  </target>
+</project>

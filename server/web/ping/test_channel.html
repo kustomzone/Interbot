@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test Channel</title>
+    <script src="../js/jquery-2.0.3.min.js"></script>
+    <script src="../js/autobahn.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var connection = null;
+        var topic = "wamp://" + window.location.hostname + "/text";
+        var subscribed = false;
+        $("#subscribe").click(function() {
+          if (subscribed) {
+            subscribed = false;
+            $("#subscribe").text("Subscribe");
+            connection.unsubscribe(topic);
+            connection.close();
+            connection = null;
+          } else {
+            var protocol = window.location.protocol.indexOf("https") === 0 ? "wss://" : "ws://";
+            var service_address = protocol + window.location.host +
+                                  "/interbot/ping/test_channel.wamp";
+            ab.connect(service_address,
+                       function(session) {
+                         connection = session;
+                         connection.subscribe(topic,
+                                              function(topic, event) {
+                                                $("#inbox").text(event);
+                                              });
+                         subscribed = true;
+                         $("#subscribe").text("Unsubscribe");
+                       },
+                       function (code, reason) {});
+          }
+        });
+        $("#publish").click(function() {
+          if (connection == null) return;
+          connection.publish(topic, $("#outbox").val(), true);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>
+      <button id="subscribe" style="width:100px">Subscribe</button>
+    </p>
+    <p>
+      <label for="outbox">Publish:</label>
+      <input id="outbox" type="text" size="50"/>
+      <button id="publish" style="width:100px">Publish</button>
+    </p>
+    <p id="inbox"></p>
+  </body>
+</html>

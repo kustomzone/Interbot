@@ -1,0 +1,12 @@
+<Context>
+  <Resource name="jdbc/UserDB"
+            auth="Container"
+            type="javax.sql.DataSource"
+            maxActive="64"
+            maxIdle="8"
+            validationQuery="/* ping */"
+            driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://localhost:3306/webcat_dev"
+            username="webcat_user"
+            password="xxxxxxxx"/>
+</Context>

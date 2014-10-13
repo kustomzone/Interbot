@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+     html, body {
+       height: 100%;
+       overflow: hidden;
+     }
+     body {
+       background: radial-gradient(black 15%, transparent 16%) 0 0,
+                   radial-gradient(black 15%, transparent 16%) 8px 8px,
+                   radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+                   radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+       background-color:#282828;
+       background-size:16px 16px;
+     }
+     h1 {
+       color: #E0A830;
+       font-family: Verdana;
+       font-size: 150px;
+       font-variant: small-caps;
+       font-weight: bold;
+       margin-top: 3%;
+       text-align: center;
+     }
+     #login_button {
+       font-family: Courier New;
+       font-size: xx-large;
+       height: 50px;
+       margin-left: 42%;
+       margin-right: 42%;
+       width: 16%;
+     }
+     #login_button:hover {
+       background-color: #E0A830;
+     }
+     #tm {
+       font-size: small;
+       vertical-align: top;
+     }
+    </style>
+    <title>General AI</title>
+  </head>
+  <body>
+    <h1>General AI<span id="tm">TM</span></h1>
+    <button id="login_button" onclick="window.location.assign('user/login.jsp')">Login</button>
+  </body>
+</html>
